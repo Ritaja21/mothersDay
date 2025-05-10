@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@fontsource/homemade-apple";
+
+.font-handwriting {
+  font-family: 'Homemade Apple', cursive;
+}
