@@ -15,19 +15,18 @@ import pujo from "./assets/pujo.jpg";
 // import museum from "../assets/museum.jpg";
 import aldo from "./assets/aldo.jpg";
 import mother2 from "./assets/mother2.jpg";
-const Section = ({ children }) => (
+const Section = ({ children, className = "" }) => (
   <motion.section
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="min-h-screen flex items-center justify-center px-4 md:px-12 py-6 text-center"
+    className={`min-h-screen flex items-center justify-center px-4 md:px-12 py-6 text-center ${className}`}
   >
-    <div className="max-w-5xl w-full">{children}</div>
+    <div className="max-w-6xl w-full">{children}</div>
   </motion.section>
 );
 
-
-export default function MothersDayPage() {
+export default function App() {
   return (
     <main className=" flex flex-col min-h-screen w-full bg-cover bg-center bg-no-repeat text-gray-800 font-serif relative"
       style={{ backgroundImage: `url(${bg})` }}>
@@ -35,33 +34,30 @@ export default function MothersDayPage() {
       <img
         src={flora}
         alt="Flower Top Left"
-        className="fixed top-4 left-4 w-20 h-50 md:w-30 md:h-30"
+        className="fixed top-4 left-4 w-16 md:w-24"
       />
 
       {/* Flower - Bottom Right */}
       <img
         src={flora}
         alt="Flower Bottom Right"
-        className="fixed bottom-4 right-4 w-10 h-10 md:w-30 md:h-30"
-        style={{
-          transform: 'rotate(180deg)'
-        }}
+        className="fixed bottom-4 right-4 w-16 md:w-24 transform rotate-180"
       />
 
       {/* Hero Section */}
-      < Section className="min-h-[40vh]">
-        <div className="flex flex-col md:flex-row items-center justify-between py-4">
+      < Section>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="text-left"
+            className="text-left  w-full md:w-1/2"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">
               Happy Mother’s Day, Ma ❤️
             </h1>
-            <p className="text-lg md:text-xl">
+            <p className="text-base md:text-xl">
               A small tribute to the woman who gave me everything.
             </p>
           </motion.div>
@@ -76,25 +72,25 @@ export default function MothersDayPage() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="relative w-full max-w-sm mt-6 md:mt-0"
+            className="relative w-full max-w-sm md:max-w-md mx-auto"
           >
             <Lottie
               animationData={animationData}
               loop={true}
               autoplay={true}
-              className="absolute top-1/2 left-1/2 w-[750px] h-[600px] -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none"
+              className="absolute inset-0 w-[400px] h-[400px] md:w-[700px] md:h-[600px] -z-10"
             />
             <motion.img
               src={mother}
               alt="Mother"
-              className="rounded-xl shadow-lg w-full relative z-10"
+              className="rounded-xl shadow-lg w-full h-auto object-cover relative z-10"
             />
           </motion.div>
         </div>
       </Section>
 
       {/* Scroll down animation */}
-      <div className="h-[10vh] flex items-center justify-center mt-[-10px]">
+      <div className="h-[10vh] flex items-center justify-center">
         <motion.div
           initial={{ opacity: 1, x: 50 }}
           whileInView={{ opacity: 1, x: 50 }}
@@ -110,7 +106,7 @@ export default function MothersDayPage() {
             animationData={scroll}
             loop={true}
             autoplay={true}
-            className="w-[100px] h-[200px] z-10 pointer-events-none"
+            className="w-[60px] md:w-[100px]"
           />
         </motion.div>
 
@@ -119,37 +115,37 @@ export default function MothersDayPage() {
       {/* Polaroid Collage Section */}
       <Section>
         <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center font-handwriting">Some Memories</h2>
-        <div className="flex items-center justify-between gap-10">
+        <div className="flex flex-wrap items-start justify-center gap-10">
 
           {/* Left Polaroids and Paragraph */}
-          <div className="relative w-[300px] h-[400px]">
+          <div className="relative w-[300px] h-[460px]">
             <motion.div className="absolute top-0 left-2 rotate-[-8deg] z-20">
-              <div className="bg-white p-2 rounded-md shadow-lg w-[300px]">
+              <div className="bg-white p-2 rounded-md shadow-lg w-[260px]">
                 <img src={k1} alt="hug" className="rounded w-full h-auto" />
                 <p className="mt-2 text-xs text-center font-handwriting">Kashmir Trip ⛰</p>
               </div>
             </motion.div>
             <motion.div className="absolute top-50 left-40 rotate-[5deg] z-10">
-              <div className="bg-white p-2 rounded-md shadow-lg w-[300px]">
+              <div className="bg-white p-2 rounded-md shadow-lg w-[260px]">
                 <img src={k2} alt="story" className="rounded w-full h-auto" />
                 <p className="mt-2 text-xs text-center font-handwriting">Shoulder-buddy goals🦅</p>
               </div>
             </motion.div>
             {/* Arrow Animation */}
-            <div className="absolute top-[250px] left-[0px] w-40 rotate-[180deg] z-30">
+            <div className="absolute top-[280px] left-0 w-40 rotate-180 z-30">
               <Player
                 autoplay
                 loop
                 src={arrow}
-                style={{ height: "60px", width: "200px" }}
+                style={{ height: "60px", width: "150px" }}
               />
             </div>
 
             {/* PARA1 in middle of the two polaroids */}
-            <p className="absolute top-[300px] left-[-200px] w-48 text-sm text-left rotate-[-5deg] z-30 font-handwriting">
+            <p className="absolute top-[360px] left-0 w-44 text-sm  rotate-[-5deg] z-30 font-handwriting">
               You switch from chill mode to chandi mode so fast — always a full-blown drama queen and an instant stand-up comedian, trying way too hard to make me smile!
             </p>
-            <motion.div className="absolute top-100 left-0 rotate-[15deg] z-30">
+            <motion.div className="absolute top-[360px] left-0 rotate-[15deg] z-30">
               <div className="bg-white p-2 rounded-md shadow-lg w-[200px]">
                 <img src={mother2} alt="smile" className="rounded w-full h-auto" />
                 <p className="mt-2 text-xs text-center font-handwriting">Chill Vibes👑</p>
@@ -157,13 +153,13 @@ export default function MothersDayPage() {
             </motion.div>
           </div>
           {/* Center SVG */}
-          <div className="w-[120px] h-[400px] flex items-center justify-center">
-            <img src={flora2} alt="flower" className="w-full h-[400]" />
+          <div className="w-[100px] h-[400px] flex items-center justify-center">
+            <img src={flora2} alt="flower" className="w-full h-auto" />
           </div>
           {/* Right Polaroids and Paragraph */}
-          <div className="relative w-[300px] h-[400px]">
+          <div className="relative w-[300px] h-[460px]">
             <motion.div className="absolute top-0 right-40 rotate-[6deg] z-10">
-              <div className="bg-white p-2 rounded-md shadow-lg w-[250px]">
+              <div className="bg-white p-2 rounded-md shadow-lg w-[240px]">
                 <img src={aldo} alt="talks" className="rounded w-full h-auto" />
                 <p className="mt-2 text-xs text-center font-handwriting">Aldo Cafe🫣</p>
               </div>
@@ -174,7 +170,7 @@ export default function MothersDayPage() {
                 autoplay
                 loop
                 src={arrow}
-                style={{ height: "60px", width: "200px" }}
+                style={{ height: "60px", width: "150px" }}
               />
             </div>
             {/* PARA2 - top right */}
@@ -192,14 +188,14 @@ export default function MothersDayPage() {
       </Section>
 
       {/* Letter Section */}
-      <Section className="pt-40">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4">A Letter to You</h2>
+      <Section className="pt-20 pb-10">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-6">A Letter to You</h2>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className=" text-lg leading-relaxed"
+          className=" text-base md:text-lg leading-relaxed px-4 md:px-12"
           style={{ fontFamily: "'Dancing Script', cursive" }}
         >
 
